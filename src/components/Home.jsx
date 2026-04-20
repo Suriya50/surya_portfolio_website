@@ -2,7 +2,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaDownload } from "react-icons/fa";
 import photo from "../assets/images/photo.png";
-import resumePDF from "../assets/images/resumee.pdf"; // Import resume from assets
+import resumePDF from "../assets/images/Resumee.pdf"; // Import resume from assets
 
 const Home = () => {
   return (
@@ -38,7 +38,7 @@ const Home = () => {
           <div className="mt-4 sm:mt-6 flex justify-center md:justify-start">
             <a
               href={resumePDF}
-              download="Surya_Resume.pdf"
+              download="Resumee.pdf"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-sm sm:text-base font-medium hover:scale-105"
             >
               <FaDownload size={16} />
