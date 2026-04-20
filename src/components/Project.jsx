@@ -8,23 +8,15 @@ import jsMasterImg from "../assets/images/javascript.png";
 import rentalCarImg from "../assets/images/rental.png";
 import v2cSurvivalImg from "../assets/images/survival.png";
 
-// Project data
+// Project data with updated links
 const projects = [
-  {
-    title: "Ecommerce App",
-    description:
-      "Modern ecommerce web app with product listings, shopping cart, and checkout functionality.",
-    image: ecommerceImg,
-    technologies: ["React", "Tailwind", "Node.js"],
-    link: "#",
-  },
   {
     title: "Rental Car Service",
     description:
       "Complete car rental platform with vehicle listings, booking system and authentication.",
     image: rentalCarImg,
     technologies: ["React", "MongoDB", "Express"],
-    link: "#",
+    link: "https://car-rental-react-project-sw18.vercel.app/",
   },
   {
     title: "V2C Survival Guide",
@@ -32,7 +24,7 @@ const projects = [
       "Survival guide app with emergency tips and location-based alerts.",
     image: v2cSurvivalImg,
     technologies: ["React", "Firebase", "Maps API"],
-    link: "#",
+    link: "https://survival-guide-project.vercel.app/",
   },
   {
     title: "Portfolio Website",
@@ -40,7 +32,7 @@ const projects = [
       "Personal portfolio website showcasing my projects and skills.",
     image: portfolioImg,
     technologies: ["React", "Tailwind"],
-    link: "#",
+    link: "https://surya-portfolio-website-l25n.vercel.app/",
   },
   {
     title: "Hospital Management System",
@@ -48,7 +40,15 @@ const projects = [
       "Hospital system to manage patients, appointments and staff.",
     image: hospitalImg,
     technologies: ["MERN", "JWT", "Bootstrap"],
-    link: "#",
+    link: "#", // You can update this when you have the link
+  },
+  {
+    title: "Ecommerce App",
+    description:
+      "Modern ecommerce web app with product listings, shopping cart, and checkout functionality.",
+    image: ecommerceImg,
+    technologies: ["React", "Tailwind", "Node.js"],
+    link: "#", // You can update this when you have the link
   },
   {
     title: "JavaScript Master Website",
@@ -56,7 +56,7 @@ const projects = [
       "Learning platform to practice JavaScript concepts and exercises.",
     image: jsMasterImg,
     technologies: ["JavaScript", "HTML", "CSS"],
-    link: "#",
+    link: "https://vercel.com/suriya50s-projects/js-website",
   },
 ];
 
@@ -104,7 +104,7 @@ const Projects = () => {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="text-blue-600 font-semibold hover:underline"
+                className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1"
               >
                 View Project →
               </a>

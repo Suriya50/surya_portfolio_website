@@ -58,7 +58,7 @@ const Contact = () => {
             <div className="flex-1 min-w-0">
               <p className="text-xs sm:text-sm text-gray-500">Phone</p>
               <a href="tel:+919876543210" className="text-sm sm:text-base font-medium text-gray-800 hover:text-purple-600 truncate block">
-                +91 98765 43210
+                +91 7868943703
               </a>
             </div>
           </div>
@@ -161,7 +161,7 @@ const Contact = () => {
               </a>
               
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917868943703"
                 target="_blank"
                 rel="noreferrer"
                 className="group flex flex-col items-center p-3 sm:p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-all duration-300"
