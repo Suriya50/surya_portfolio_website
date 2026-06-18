@@ -1,96 +1,97 @@
-import React, { useState } from "react";
-import { Link } from "react-scroll";
+// components/Navbar.jsx
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
-  const links = [
-    { name: "home", offset: -80 },
-    { name: "about", offset: -80 },
-    { name: "skills", offset: -80 },
-    { name: "education", offset: -80 },
-    { name: "projects", offset: -80 },
-    { name: "contact", offset: -80 }
-  ];
-  
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const links = ["home", "about", "skills", "education", "projects", "contact"];
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
+    }
+  };
 
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <div className="text-xl sm:text-2xl font-bold tracking-tight cursor-pointer">
-            <span className="text-blue-600">Port</span>
-            <span className="text-purple-600">Folio</span>
-          </div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="text-xl sm:text-2xl font-bold cursor-pointer"
+          >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400">
+              Surya
+            </span>
+            <span className="text-white">.</span>
+          </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-1 lg:gap-2">
             {links.map((link) => (
-              <Link
-                key={link.name}
-                to={link.name}
-                smooth={true}
-                duration={500}
-                offset={link.offset}
-                spy={true}
-                activeClass="text-blue-600 font-semibold"
-                className="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-gray-700 capitalize hover:text-blue-600 cursor-pointer transition-all duration-300 rounded-lg hover:bg-blue-50"
+              <motion.button
+                key={link}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => scrollTo(link)}
+                className="px-3 lg:px-4 py-1.5 text-xs lg:text-sm text-gray-400 font-medium capitalize hover:text-cyan-400 transition-all duration-300 rounded-lg hover:bg-white/5 relative group"
               >
-                {link.name}
-              </Link>
+                {link}
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 transition-all duration-300"></span>
+              </motion.button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 focus:outline-none transition-colors duration-300"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg 
-                className="w-6 h-6" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+          {/* Mobile Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white transition"
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <div 
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
-      >
-        <div className="bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-100">
-          {links.map((link) => (
-            <Link
-              key={link.name}
-              to={link.name}
-              smooth={true}
-              duration={500}
-              offset={link.offset}
-              spy={true}
-              activeClass="text-blue-600 bg-blue-50 font-semibold"
-              className="block px-6 py-4 text-base font-medium text-gray-700 capitalize hover:text-blue-600 hover:bg-blue-50 cursor-pointer transition-all duration-300 border-b border-gray-50 last:border-b-0"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </nav>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#0a0a1a]/95 backdrop-blur-xl border-t border-white/5"
+          >
+            {links.map((link) => (
+              <button
+                key={link}
+                onClick={() => scrollTo(link)}
+                className="block w-full text-left px-6 py-3 text-sm text-gray-400 font-medium capitalize hover:text-cyan-400 hover:bg-white/5 transition"
+              >
+                {link}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 

@@ -1,65 +1,94 @@
-// About.jsx
+// components/About.jsx
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
+
   return (
-    <section
-      id="about"
-      className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 flex flex-col items-center justify-center py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-20"
-    >
-      {/* Heading */}
-      <div className="w-full max-w-4xl mx-auto text-center mb-8 sm:mb-10 md:mb-12">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 inline-block border-b-4 border-purple-400 pb-2 px-4">
-          About Me
-        </h1>
-      </div>
+    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0f0a1f] to-[#0a0a1a]"></div>
 
-      {/* Content Card */}
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-6 sm:p-8 md:p-10">
-          
-          {/* Introduction */}
-          <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed text-justify">
-            Hi, I'm <span className="font-semibold text-purple-600">Surya</span>, a passionate{" "}
-            <span className="font-semibold text-purple-600">MERN Full Stack Developer</span>{" "}
-            dedicated to creating clean, responsive, and interactive web applications. 
-            I specialize in HTML, CSS, JavaScript, and React, and I love turning creative 
-            ideas into real-world projects that provide seamless user experiences across all devices.
-          </p>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold">
+            About{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+              Me
+            </span>
+          </h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+        </motion.div>
 
-          {/* Divider with Icon */}
-          <div className="flex items-center justify-center my-8 sm:my-10">
-            <div className="w-16 sm:w-20 h-0.5 bg-purple-300 rounded-full"></div>
-            <div className="mx-4 sm:mx-5 text-purple-400 text-xl sm:text-2xl">✦</div>
-            <div className="w-16 sm:w-20 h-0.5 bg-purple-300 rounded-full"></div>
-          </div>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { value: "10+", label: "Projects" },
+                { value: "Fresher", label: "Experience" },
+                { value: "5+", label: "Certifications" },
+                { value: "24/7", label: "Learning" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/5 hover:border-purple-500/30 transition-all duration-300"
+                >
+                  <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-400 text-xs mt-1">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-          {/* Focus Section */}
-          <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed text-justify mb-8 sm:mb-10">
-            My focus is on writing <span className="font-medium text-purple-600">efficient, maintainable, and accessible code</span>{" "}
-            while continuously learning new technologies to grow as a developer. I believe in the power of 
-            clean code and attention to detail to create exceptional user experiences.
-          </p>
-
-          {/* Philosophy Section */}
-          <div className="bg-purple-50 rounded-lg p-5 sm:p-6 md:p-7 border-l-4 border-purple-400">
-            <p className="text-gray-800 text-base sm:text-lg md:text-xl italic">
-              "I believe that great websites combine design, functionality, and performance. 
-              My goal is to deliver digital experiences that are both visually appealing and easy to use."
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-3"
+          >
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+              I'm <span className="font-bold text-cyan-400">Surya</span>, a passionate{" "}
+              <span className="font-bold text-cyan-400">MERN Full Stack Developer</span>{" "}
+              who loves building modern web applications.
             </p>
-          </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              I specialize in React, Node.js, Express, MongoDB, and modern frontend
+              technologies. I enjoy turning ideas into beautiful, functional websites.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              As a fresh graduate, I'm eager to learn, grow, and contribute to
+              exciting projects. I focus on writing clean, efficient, and
+              maintainable code.
+            </p>
 
-          {/* Skills Highlight */}
-          <div className="mt-8 sm:mt-10 flex flex-wrap gap-2 sm:gap-3 justify-center">
-            {["React", "JavaScript", "Tailwind CSS", "Node.js", "MongoDB", "Express"].map((skill) => (
-              <span
-                key={skill}
-                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-purple-600 rounded-full text-xs sm:text-sm font-medium hover:bg-purple-600 hover:text-white transition-colors duration-300 cursor-default"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["Quick Learner", "Team Player", "Problem Solver", "Creative"].map(
+                (tag) => (
+                  <motion.span
+                    key={tag}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-cyan-400 rounded-full text-xs font-medium"
+                  >
+                    {tag}
+                  </motion.span>
+                )
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

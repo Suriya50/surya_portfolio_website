@@ -1,22 +1,26 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Education from "./components/Education";
-import Home from "./components/Home";
+// App.jsx
+import React from "react";
 import Navbar from "./components/Navbar";
-import Project from "./components/Project";
+import Home from "./components/Home";
+import About from "./components/About";
 import Skills from "./components/Skills";
+import Education from "./components/Education";
+import Projects from "./components/Project";
+import Contact from "./components/Contact";
+import BackToTop from "./components/BackToTop";
 
 const App = () => {
   return (
-    <>
+    <div className="bg-[#0a0a1a] min-h-screen text-white overflow-x-hidden">
       <Navbar />
       <Home />
       <About />
       <Skills />
       <Education />
-      <Project />
+      <Projects />
       <Contact />
-    </>
+      <BackToTop />
+    </div>
   );
 };
 

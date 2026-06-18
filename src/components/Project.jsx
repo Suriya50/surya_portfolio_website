@@ -1,116 +1,151 @@
+// components/Projects.jsx
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-// Import images
-import ecommerceImg from "../assets/images/ecomerce.png";
-import portfolioImg from "../assets/images/port.png";
-import hospitalImg from "../assets/images/hosiptal.png";
-import jsMasterImg from "../assets/images/javascript.png";
+import villageImg from "../assets/images/village.png.jpeg";
+import familyVaultImg from "../assets/images/vault.png";
 import rentalCarImg from "../assets/images/rental.png";
-import v2cSurvivalImg from "../assets/images/survival.png";
+import survivalImg from "../assets/images/survival.png";
+import jsMasterImg from "../assets/images/javascript.png";
 
-// Project data with updated links
-const projects = [
+const projectsData = [
   {
-    title: "Rental Car Service",
-    description:
-      "Complete car rental platform with vehicle listings, booking system and authentication.",
+    title: "Village Citizen Management",
+    description: "Citizen record & village development system",
+    image: villageImg,
+    tech: ["React", "Node.js", "MongoDB"],
+    link: "https://citizen-management-system-vjah.vercel.app",
+    github: "https://github.com/Suriya50/village-management",
+  },
+  {
+    title: "Family Vault",
+    description: "Secure family document storage",
+    image: familyVaultImg,
+    tech: ["React", "Express", "MongoDB"],
+    link: "https://family-vault-vfmj.vercel.app",
+    github: "https://github.com/Suriya50/family-vault",
+  },
+  {
+    title: "Car Rental",
+    description: "Vehicle booking & authentication",
     image: rentalCarImg,
-    technologies: ["React", "MongoDB", "Express"],
+    tech: ["React", "MongoDB", "Express"],
     link: "https://car-rental-react-project-sw18.vercel.app/",
+    github: "https://github.com/Suriya50/car-rental",
   },
   {
-    title: "V2C Survival Guide",
-    description:
-      "Survival guide app with emergency tips and location-based alerts.",
-    image: v2cSurvivalImg,
-    technologies: ["React", "Firebase", "Maps API"],
+    title: "Survival Guide",
+    description: "Emergency tips & alerts",
+    image: survivalImg,
+    tech: ["React", "Node.js", "Maps API"],
     link: "https://survival-guide-project.vercel.app/",
+    github: "https://github.com/Suriya50/survival-guide",
   },
   {
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio website showcasing my projects and skills.",
-    image: portfolioImg,
-    technologies: ["React", "Tailwind"],
-    link: "https://surya-portfolio-website-l25n.vercel.app/",
-  },
-  {
-    title: "Hospital Management System",
-    description:
-      "Hospital system to manage patients, appointments and staff.",
-    image: hospitalImg,
-    technologies: ["MERN", "JWT", "Bootstrap"],
-    link: "#", // You can update this when you have the link
-  },
-  {
-    title: "Ecommerce App",
-    description:
-      "Modern ecommerce web app with product listings, shopping cart, and checkout functionality.",
-    image: ecommerceImg,
-    technologies: ["React", "Tailwind", "Node.js"],
-    link: "#", // You can update this when you have the link
-  },
-  {
-    title: "JavaScript Master Website",
-    description:
-      "Learning platform to practice JavaScript concepts and exercises.",
+    title: "JavaScript Master",
+    description: "Interactive JS learning platform",
     image: jsMasterImg,
-    technologies: ["JavaScript", "HTML", "CSS"],
-    link: "https://vercel.com/suriya50s-projects/js-website",
+    tech: ["JavaScript", "HTML", "CSS"],
+    link: "https://js-website-ten.vercel.app",
+    github: "https://github.com/Suriya50/js-master",
   },
 ];
 
 const Projects = () => {
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+
   return (
-    <section
-      id="projects"
-      className="w-full min-h-screen bg-gray-100 flex flex-col items-center py-20 px-6"
-    >
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-10 border-b-4 border-blue-500 pb-2">
-        My Projects
-      </h1>
+    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0f0a1f] to-[#0a0a1a]"></div>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-        {projects.map((project) => (
-          <div
-            key={project.title}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-48 object-cover"
-            />
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold">
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+              Projects
+            </span>
+          </h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto mt-3 rounded-full"></div>
+        </motion.div>
 
-            <div className="p-6">
-              <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-
-              <p className="text-gray-600 mb-3">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+          {projectsData.map((project, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              whileHover={{ y: -5 }}
+              className="group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-purple-500/40 transition-all duration-300"
+            >
+              <div className="relative overflow-hidden h-28 sm:h-32">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent"></div>
               </div>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1"
-              >
-                View Project →
-              </a>
-            </div>
-          </div>
-        ))}
+              <div className="p-2.5 sm:p-3">
+                <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 transition line-clamp-1">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 text-[8px] sm:text-[10px] line-clamp-1 mt-0.5">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1 mt-1.5">
+                  {project.tech.slice(0, 2).map((t) => (
+                    <span
+                      key={t}
+                      className="text-[6px] sm:text-[8px] px-1.5 py-0.5 rounded-full bg-purple-500/10 text-cyan-400 border border-purple-500/20"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {project.tech.length > 2 && (
+                    <span className="text-[6px] sm:text-[8px] px-1.5 py-0.5 rounded-full bg-white/5 text-gray-400 border border-white/10">
+                      +{project.tech.length - 2}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex gap-1.5 mt-2">
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-[8px] sm:text-[10px] font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+                  >
+                    <FaExternalLinkAlt size={8} /> Live
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center px-2 py-1 bg-white/10 text-gray-300 text-[8px] sm:text-[10px] font-semibold rounded-lg hover:bg-white/20 transition-all duration-300"
+                  >
+                    <FaGithub size={12} />
+                  </motion.a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
