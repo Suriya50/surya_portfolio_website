@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import Education from "./components/Education";
+import Education from "./components/Education"; // ✅ Make sure this is imported
 import Projects from "./components/Project";
 import Contact from "./components/Contact";
 import BackToTop from "./components/BackToTop";
@@ -16,7 +16,7 @@ const App = () => {
       <Home />
       <About />
       <Skills />
-      <Education />
+      <Education />  {/* ✅ Make sure this is rendered */}
       <Projects />
       <Contact />
       <BackToTop />
