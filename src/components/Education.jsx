@@ -43,7 +43,10 @@ const Education = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id="education" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section 
+      id="education" 
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0f0a1f] to-[#0a0a1a]"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -65,12 +68,11 @@ const Education = () => {
           <p className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">My academic journey</p>
         </motion.div>
 
-        {/* Timeline - Mobile First */}
+        {/* Timeline */}
         <div className="relative">
-          {/* Vertical Line - Hidden on mobile, visible on tablet/desktop */}
+          {/* Vertical line - hidden on mobile, shown on tablet+ */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400"></div>
-          
-          {/* Mobile Line - Visible only on mobile */}
+          {/* Mobile vertical line */}
           <div className="md:hidden absolute left-3 sm:left-4 top-0 w-0.5 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400"></div>
 
           {educationData.map((edu, idx) => {
@@ -81,23 +83,22 @@ const Education = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`relative flex flex-col md:flex-row mb-6 sm:mb-8 ${
+                className={`relative flex flex-col md:flex-row mb-6 sm:mb-8 last:mb-0 ${
                   isLeft ? "md:justify-start" : "md:justify-end"
                 }`}
               >
-                {/* Timeline Dot - Desktop */}
+                {/* Timeline dot - desktop */}
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-cyan-400 rounded-full border-2 border-[#0a0a1a] shadow-lg shadow-cyan-400/20 z-10"></div>
-                
-                {/* Timeline Dot - Mobile */}
+                {/* Timeline dot - mobile */}
                 <div className="md:hidden absolute left-3 sm:left-4 transform -translate-x-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full border-2 border-[#0a0a1a] shadow-lg shadow-cyan-400/20 z-10"></div>
 
-                {/* Content */}
+                {/* Card container */}
                 <div className={`ml-8 sm:ml-10 md:ml-0 w-full md:w-5/12 ${isLeft ? "md:pr-6" : "md:pl-6"}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -2 }}
                     className="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-5 border border-white/5 hover:border-cyan-400/30 transition-all duration-300"
                   >
-                    {/* Header with Icon, Year, Grade */}
+                    {/* Header with icon, year, grade */}
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
                       <div className="text-purple-400 text-base sm:text-lg">{edu.icon}</div>
                       <span className="text-[10px] sm:text-xs bg-cyan-400/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-400/20">
@@ -110,7 +111,7 @@ const Education = () => {
                       )}
                     </div>
 
-                    {/* School Name */}
+                    {/* School name */}
                     <h3 className="text-white text-xs sm:text-sm md:text-base font-bold leading-tight">
                       {edu.school}
                     </h3>
@@ -131,7 +132,7 @@ const Education = () => {
           })}
         </div>
 
-        {/* Achievement Badge */}
+        {/* Achievement badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -140,7 +141,7 @@ const Education = () => {
         >
           <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-purple-500/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-purple-500/20">
             <span className="text-base sm:text-lg">🎓</span>
-            <span className="text-gray-300 text-[10px] sm:text-xs md:text-sm font-medium">
+            <span className="text-gray-300 text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap">
               Fresh Graduate • Eager to Learn & Grow
             </span>
           </div>

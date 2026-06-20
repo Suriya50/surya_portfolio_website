@@ -9,6 +9,7 @@ import familyVaultImg from "../assets/images/vault.png";
 import rentalCarImg from "../assets/images/rental.png";
 import survivalImg from "../assets/images/survival.png";
 import jsMasterImg from "../assets/images/javascript.png";
+import connectImg from "../assets/images/connect.png.jpeg"; // ✅ New import
 
 const projectsData = [
   {
@@ -51,6 +52,15 @@ const projectsData = [
     link: "https://js-website-ten.vercel.app",
     github: "https://github.com/Suriya50/js-master",
   },
+  // ✅ NEW PROJECT - Connect Real-Time Chat
+  {
+    title: "Connect - Real Time Chat",
+    description: "Real-time messaging app with private rooms & instant chat",
+    image: connectImg,
+    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+    link: "https://mineconnect-project-fm4h.vercel.app",
+    github: "https://github.com/Suriya50/connect-chat",
+  },
 ];
 
 const Projects = () => {
@@ -77,7 +87,7 @@ const Projects = () => {
           <div className="w-16 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto mt-3 rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           {projectsData.map((project, idx) => (
             <motion.div
               key={idx}
