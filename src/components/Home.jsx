@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { SiMongodb, SiExpress } from "react-icons/si";
 import photo from "../assets/images/photo.png";
-import resumePDF from "../assets/images/Resumee.pdf";
+import resumePDF from "../assets/images/Surya_S resume.pdf";
 
 // Floating Particles Background
 const Particles = () => {
