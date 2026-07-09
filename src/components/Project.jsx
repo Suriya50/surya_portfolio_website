@@ -8,8 +8,8 @@ import villageImg from "../assets/images/village.png.jpeg";
 import familyVaultImg from "../assets/images/vault.png";
 import rentalCarImg from "../assets/images/rental.png";
 import survivalImg from "../assets/images/survival.png";
-import jsMasterImg from "../assets/images/javascript.png";
-import connectImg from "../assets/images/connect.png.jpeg"; // ✅ New import
+import connectImg from "../assets/images/connect.png.jpeg";
+import taskTrackerImg from "../assets/images/tracker.png"; // ✅ Task Tracker image
 
 const projectsData = [
   {
@@ -45,21 +45,20 @@ const projectsData = [
     github: "https://github.com/Suriya50/survival-guide",
   },
   {
-    title: "JavaScript Master",
-    description: "Interactive JS learning platform",
-    image: jsMasterImg,
-    tech: ["JavaScript", "HTML", "CSS"],
-    link: "https://js-website-ten.vercel.app",
-    github: "https://github.com/Suriya50/js-master",
-  },
-  // ✅ NEW PROJECT - Connect Real-Time Chat
-  {
     title: "Connect - Real Time Chat",
     description: "Real-time messaging app with private rooms & instant chat",
     image: connectImg,
     tech: ["React", "Node.js", "MongoDB", "Socket.io"],
     link: "https://mineconnect-project-fm4h.vercel.app",
     github: "https://github.com/Suriya50/connect-chat",
+  },
+  {
+    title: "Task Tracker",
+    description: "Full-stack task management with authentication & real-time updates",
+    image: taskTrackerImg,
+    tech: ["React", "Express", "MongoDB"],
+    link: "https://task-tracker-fl88.vercel.app/",
+    github: "https://github.com/your-username/task-tracker", // Replace with your repo link
   },
 ];
 
