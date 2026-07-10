@@ -31,7 +31,7 @@ const Contact = () => {
   const contactInfo = [
     { icon: FaEnvelope, label: "Email", value: "suryazzx6@gmail.com", href: "mailto:suryazzx6@gmail.com" },
     { icon: FaPhoneAlt, label: "Phone", value: "+91 7868943703", href: "tel:+917868943703" },
-    { icon: FaMapMarkerAlt, label: "Location", value: "Tiruvannamalai, India", href: "#" },
+    { icon: FaMapMarkerAlt, label: "Location", value: "chennai, Tamilnadu", href: "#" },
   ];
 
   return (
