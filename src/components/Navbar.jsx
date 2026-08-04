@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Send, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
+  // 1. SET DEFAULT TO DARK MODE
   const [isDark, setIsDark] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = ['Home', 'About', 'Skills', 'Education', 'Projects', 'Contact'];
 
-  // 1. PREMIUM ACTIVE SCROLL DETECTION
+  // 2. PREMIUM ACTIVE SCROLL DETECTION
   useEffect(() => {
     const handleScroll = () => {
       const sections = navLinks.map(link => link.toLowerCase());
@@ -28,18 +29,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
 
-  // 2. FUNCTIONAL THEME TOGGLE
+  // 3. FIXED THEME TOGGLE (Removes .light if dark, Adds .light if light)
   useEffect(() => {
+    const root = document.documentElement;
     if (isDark) {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
+      // If we want Dark Mode, we ensure the .light class is REMOVED
+      root.classList.remove('light');
     } else {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
+      // If we want Light Mode, we ADD the .light class
+      root.classList.add('light');
     }
   }, [isDark]);
 
-  // 3. CLOSE MENU ON LINK CLICK
+  // 4. CLOSE MENU ON LINK CLICK
   const handleLinkClick = (id) => {
     setActiveSection(id);
     setIsMenuOpen(false);
@@ -123,7 +125,7 @@ const Navbar = () => {
             <Send size={14} />
           </motion.a>
 
-          {/* PREMIUM MOBILE SIDEBAR TOGGLE BUTTON */}
+          {/* MOBILE SIDEBAR TOGGLE BUTTON */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMenuOpen(true)}
