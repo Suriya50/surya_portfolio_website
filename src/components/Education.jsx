@@ -1,152 +1,128 @@
-// components/Education.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaGraduationCap, FaCode } from "react-icons/fa";
-
-const educationData = [
-  {
-    school: "Mary Immaculate Heart Matric Higher Sec School",
-    degree: "SSLC (Xth Standard)",
-    year: "2019-2020",
-    grade: "88%",
-    description: "Strong foundation in Mathematics, Science, and English.",
-    icon: <FaGraduationCap />,
-  },
-  {
-    school: "Mary Immaculate Heart Matric Higher Sec School",
-    degree: "HSC (XIIth - Bio-Maths)",
-    year: "2021-2022",
-    grade: "80%",
-    description: "Focused on core subjects. Developed analytical thinking.",
-    icon: <FaGraduationCap />,
-  },
-  {
-    school: "Karan Arts And Science College",
-    degree: "BCA (Bachelor of Computer Applications)",
-    year: "2022-2025",
-    grade: "84% (Pursuing)",
-    description: "Strong interest in coding. Built mini-projects.",
-    icon: <FaGraduationCap />,
-  },
-  {
-    school: "SLA Institute, Chennai",
-    degree: "Full Stack Development Course",
-    year: "2025",
-    grade: "",
-    description: "Hands-on training in MERN stack, live projects.",
-    icon: <FaCode />,
-  },
-];
+import { FaGraduationCap, FaBook, FaMedal } from "react-icons/fa";
 
 const Education = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
+  const educationData = [
+    {
+      year: "2019-2020",
+      title: "SSLC",
+      school: "Mary Immaculate Heart Matric Hr. Sec. School",
+      location: "Tiruvannamalai",
+      grade: "88%",
+      description: "Strong foundation in Mathematics, Science, and English.",
+      icon: <FaMedal className="text-accent text-2xl md:text-4xl" />,
+    },
+    {
+      year: "2021-2022",
+      title: "Higher Secondary (HSC)",
+      school: "Mary Immaculate Heart Matric Hr. Sec. School",
+      location: "Tiruvannamalai",
+      grade: "80%",
+      description: "Focused on Bio-Maths. Developed strong analytical thinking.",
+      icon: <FaBook className="text-accent text-2xl md:text-4xl" />,
+    },
+    {
+      year: "2022-2025",
+      title: "BCA - Computer Applications",
+      school: "Karan Arts And Science College",
+      location: "Tiruvannamalai",
+      grade: "84%",
+      description: "Strong interest in coding, development, and building mini-projects.",
+      icon: <FaGraduationCap className="text-accent text-2xl md:text-4xl" />,
+    },
+  ];
+
   return (
-    <section 
-      id="education" 
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a1a] via-[#0f0a1f] to-[#0a0a1a]"></div>
+    <section id="education" className="relative py-24 px-4 max-w-7xl mx-auto overflow-hidden bg-primary min-h-[400px]">
+      
+      {/* FAINT BACKGROUND TEXT */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none">
+        <h2 className="text-[80px] md:text-[180px] font-extrabold text-white/[0.03] tracking-widest">
+          EDUCATION
+        </h2>
+      </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Heading */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
-              Education
-            </span>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 flex flex-col lg:flex-row items-center gap-12 mt-6"
+      >
+        
+        {/* LEFT SIDE TEXT */}
+        <div className="w-full lg:w-1/3 text-center lg:text-left">
+          <div className="inline-block mb-3 text-accent text-[10px] font-semibold tracking-widest border border-accent/20 px-3 py-1 rounded-full bg-accent/5">
+            MY JOURNEY
+          </div>
+          <h2 className="text-3xl font-bold text-white">
+            <span className="text-accent">Education</span>
           </h2>
-          <div className="w-12 sm:w-16 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto mt-2 sm:mt-3 rounded-full"></div>
-          <p className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">My academic journey</p>
-        </motion.div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line - hidden on mobile, shown on tablet+ */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400"></div>
-          {/* Mobile vertical line */}
-          <div className="md:hidden absolute left-3 sm:left-4 top-0 w-0.5 h-full bg-gradient-to-b from-purple-400 via-cyan-400 to-purple-400"></div>
-
-          {educationData.map((edu, idx) => {
-            const isLeft = idx % 2 === 0;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`relative flex flex-col md:flex-row mb-6 sm:mb-8 last:mb-0 ${
-                  isLeft ? "md:justify-start" : "md:justify-end"
-                }`}
-              >
-                {/* Timeline dot - desktop */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-cyan-400 rounded-full border-2 border-[#0a0a1a] shadow-lg shadow-cyan-400/20 z-10"></div>
-                {/* Timeline dot - mobile */}
-                <div className="md:hidden absolute left-3 sm:left-4 transform -translate-x-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full border-2 border-[#0a0a1a] shadow-lg shadow-cyan-400/20 z-10"></div>
-
-                {/* Card container */}
-                <div className={`ml-8 sm:ml-10 md:ml-0 w-full md:w-5/12 ${isLeft ? "md:pr-6" : "md:pl-6"}`}>
-                  <motion.div
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-5 border border-white/5 hover:border-cyan-400/30 transition-all duration-300"
-                  >
-                    {/* Header with icon, year, grade */}
-                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <div className="text-purple-400 text-base sm:text-lg">{edu.icon}</div>
-                      <span className="text-[10px] sm:text-xs bg-cyan-400/10 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-400/20">
-                        {edu.year}
-                      </span>
-                      {edu.grade && (
-                        <span className="text-[10px] sm:text-xs bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full border border-purple-500/20">
-                          {edu.grade}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* School name */}
-                    <h3 className="text-white text-xs sm:text-sm md:text-base font-bold leading-tight">
-                      {edu.school}
-                    </h3>
-
-                    {/* Degree */}
-                    <h4 className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-semibold mb-1.5 sm:mb-2">
-                      {edu.degree}
-                    </h4>
-
-                    {/* Description */}
-                    <p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed">
-                      {edu.description}
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-            );
-          })}
+          <p className="mt-3 text-gray-400 text-xs md:text-sm leading-relaxed max-w-sm mx-auto lg:mx-0">
+            A look at my academic background and the foundation of my knowledge.
+          </p>
         </div>
 
-        {/* Achievement badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 sm:mt-10 md:mt-12 text-center"
-        >
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-purple-500/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-purple-500/20">
-            <span className="text-base sm:text-lg">🎓</span>
-            <span className="text-gray-300 text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap">
-              Fresh Graduate • Eager to Learn & Grow
-            </span>
-          </div>
-        </motion.div>
-      </div>
+        {/* RIGHT SIDE: 3 PREMIUM CARDS WITH PERFECTLY STRAIGHT ALIGNMENT */}
+        {/* grid-cols-1 md:grid-cols-3 makes it beautifully responsive for mobile! */}
+        <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-0 relative">
+          
+          {educationData.map((edu, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.05, y: -8, boxShadow: "0 0 40px rgba(0,255,102,0.25)" }}
+              className={`relative w-full glass p-6 rounded-2xl border border-accent/30 shadow-[0_0_20px_rgba(0,255,102,0.05)] transition-all duration-300 flex flex-col justify-between`}
+            >
+              {/* Top: Year Badge & Icon */}
+              <div className="flex items-start justify-between mb-3">
+                <div className="inline-block text-[10px] font-semibold bg-secondary/80 border border-accent/30 text-white px-2 py-1 rounded-full shadow-inner shadow-accent/5">
+                  {edu.year}
+                </div>
+                <div className="p-2 rounded-xl bg-secondary/60 border border-accent/10 group-hover:border-accent/40 transition-all duration-300 backdrop-blur-sm">
+                  {edu.icon}
+                </div>
+              </div>
+
+              {/* Middle: Title, School, Location & Grade (Strictly Small Fonts) */}
+              <div className="flex-1">
+                <h4 className="text-white text-sm font-bold mb-0.5">
+                  {edu.title}
+                </h4>
+                
+                {/* School Name */}
+                <p className="text-gray-400 text-[10px] md:text-xs leading-tight mb-0.5">
+                  {edu.school}
+                </p>
+                
+                {/* Location Line - Fixed the empty span bug */}
+                <p className="text-gray-500 text-[9px] md:text-[10px] flex items-center gap-1 mb-1.5">
+                  <span className="text-accent/70 text-[9px]">📍</span> {edu.location}
+                </p>
+
+                {/* Grade Badge */}
+                <span className="text-accent/80 text-[10px] bg-accent/10 px-2 py-0.5 rounded-full inline-block">
+                  {edu.grade}
+                </span>
+              </div>
+
+              {/* Bottom: Description */}
+              <p className="text-gray-500 text-[9px] md:text-[10px] leading-relaxed mt-3 border-t border-white/5 pt-2">
+                {edu.description}
+              </p>
+
+              {/* Decorative neon bottom-right corner */}
+              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-accent/40 rounded-br-2xl opacity-70 group-hover:opacity-100 transition-opacity" />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };
