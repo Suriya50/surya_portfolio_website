@@ -29,14 +29,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
 
-  // 3. FIXED THEME TOGGLE (Removes .light if dark, Adds .light if light)
+  // 3. FIXED THEME TOGGLE
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
-      // If we want Dark Mode, we ensure the .light class is REMOVED
       root.classList.remove('light');
     } else {
-      // If we want Light Mode, we ADD the .light class
       root.classList.add('light');
     }
   }, [isDark]);
@@ -79,7 +77,7 @@ const Navbar = () => {
                 onClick={() => setActiveSection(id)}
                 className={`relative px-4 py-1.5 text-xs font-medium transition-all duration-300 rounded-full border border-transparent
                   ${isActive 
-                    ? 'text-accent border border-accent/60 bg-accent/10 shadow-[0_0_15px_rgba(0,255,102,0.15)]' 
+                    ? 'text-accent border border-accent/60 bg-accent/10 shadow-[0_0_15px_rgba(139,92,246,0.25)]' 
                     : 'text-gray-400 hover:text-accent hover:border-accent/20'
                   }
                 `}
@@ -112,14 +110,14 @@ const Navbar = () => {
             {isDark ? <Sun size={16} /> : <Moon size={16} />}
           </motion.button>
 
-          {/* Let's Connect Button (Hidden on mobile to save space) */}
+          {/* Let's Connect Button (Gradient Purple → Cyan) */}
           <motion.a 
             href="#contact" 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(0,255,102,0.4)" }} 
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(139,92,246,0.5)" }} 
             whileTap={{ scale: 0.95 }} 
-            className="hidden sm:flex items-center gap-1.5 px-5 py-2 bg-accent text-black font-medium text-sm rounded-full transition-all duration-300"
+            className="hidden sm:flex items-center gap-1.5 px-5 py-2 bg-gradient-to-r from-accent to-accent-2 text-white font-medium text-sm rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(139,92,246,0.3)]"
           >
             Let's Connect
             <Send size={14} />
@@ -186,7 +184,7 @@ const Navbar = () => {
                       onClick={() => handleLinkClick(id)}
                       className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl border border-transparent
                         ${isActive 
-                          ? 'text-accent border border-accent/60 bg-accent/10 shadow-[0_0_15px_rgba(0,255,102,0.15)]' 
+                          ? 'text-accent border border-accent/60 bg-accent/10 shadow-[0_0_15px_rgba(139,92,246,0.25)]' 
                           : 'text-gray-400 hover:text-accent hover:border-accent/20'
                         }
                       `}
@@ -212,13 +210,13 @@ const Navbar = () => {
                   </motion.button>
                 </div>
                 
-                {/* Mobile CTA Button */}
+                {/* Mobile CTA Button (Gradient) */}
                 <motion.a 
                   href="#contact" 
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 25px rgba(0,255,102,0.4)" }} 
+                  whileHover={{ scale: 1.02, boxShadow: "0 0 25px rgba(139,92,246,0.5)" }} 
                   whileTap={{ scale: 0.95 }} 
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-black font-medium text-sm rounded-xl transition-all duration-300"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-accent to-accent-2 text-white font-medium text-sm rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(139,92,246,0.3)]"
                 >
                   Let's Connect
                   <Send size={16} />

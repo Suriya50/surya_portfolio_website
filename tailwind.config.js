@@ -7,15 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#050505", // Deep black background
-        secondary: "#111111", // Dark card background
-        accent: "#00ff66",   // Neon green
-        glass: "rgba(255, 255, 255, 0.05)",
+        primary: "#0a0e27",
+        secondary: "#151a3a",
+        accent: {
+          DEFAULT: "#8b5cf6",
+          light: "#a78bfa",
+          dark: "#7c3aed",
+        },
+        "accent-2": "#06b6d4",
+        foreground: "#ffffff",
       },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-      }
     },
   },
   plugins: [],
-}
+};
