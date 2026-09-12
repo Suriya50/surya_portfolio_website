@@ -17,16 +17,16 @@ const Home = () => {
 
       <div className="relative z-10 max-w-3xl w-full mx-auto text-center">
 
-        {/* ===== Availability Badge ===== */}
+        {/* ===== Availability Badge (Green) ===== */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/40 text-accent text-[10px] font-bold mb-4"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-400/10 border border-green-400/50 text-green-400 text-[10px] font-bold mb-4 shadow-[0_0_15px_rgba(74,222,128,0.25)]"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-400"></span>
           </span>
           AVAILABLE FOR HIRE
         </motion.div>
@@ -72,9 +72,10 @@ const Home = () => {
             <Typewriter
               options={{
                 strings: [
+                   "MERN Full Stack Developer",
+                    "MERN Full Stack Developer",
                   "React Developer",
                   "Frontend Engineer",
-                  "MERN Full Stack Developer",
                   "Node.js Developer",
                   "Open to Software Engineering",
                 ],
@@ -109,7 +110,7 @@ const Home = () => {
           className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-5 text-[10px] sm:text-[11px] text-gray-500"
         >
           <span className="flex items-center gap-1">
-            <FaMapMarkerAlt className="text-accent/80" size={10} /> Tamil Nadu, India
+            <FaMapMarkerAlt className="text-accent/80" size={10} /> Chennai, Tamil Nadu
           </span>
           <span className="w-1 h-1 rounded-full bg-gray-600" />
           <span className="flex items-center gap-1">

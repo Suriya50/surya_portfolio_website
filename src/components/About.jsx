@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FaCheck } from "react-icons/fa";
-import aboutImage from "../assets/images/photo.png";
+import aboutImage from "../assets/images/my_photo.png";
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
@@ -70,7 +70,7 @@ const About = () => {
           </p>
 
           <p className="mt-3 text-gray-500 text-[11px] sm:text-xs leading-relaxed max-w-lg mx-auto lg:mx-0 italic">
-            "Currently seeking a full-time SDE role where I can contribute, learn fast, and ship meaningful products."
+            "Actively seeking a Software Developer role — open to Full Stack, Frontend (React), or Backend (Node.js) positions."
           </p>
 
           {/* Bullet Points */}
