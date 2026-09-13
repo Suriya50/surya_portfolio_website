@@ -33,7 +33,7 @@ const Projects = () => {
       icon: <FaTasks />,
       iconBg: "from-indigo-500 to-violet-600",
       link: "https://task-tracker-fl88.vercel.app/",
-      github: "https://github.com/Suriya50/task-tracker",
+      github: "https://github.com/Suriya50/task_tracker",
       decorativeText: "Better Teamwork",
     },
     {
@@ -50,7 +50,7 @@ const Projects = () => {
       icon: <FaUsers />,
       iconBg: "from-emerald-500 to-teal-600",
       link: "https://citizen-management-system-vjah.vercel.app",
-      github: "https://github.com/Suriya50/village-management",
+      github: "https://github.com/Suriya50/citizen_management_system",
       decorativeText: "Stronger Villages",
     },
     {
@@ -67,7 +67,7 @@ const Projects = () => {
       icon: <FaShieldAlt />,
       iconBg: "from-blue-500 to-indigo-600",
       link: "https://family-vault-vfmj.vercel.app",
-      github: "https://github.com/Suriya50/family-vault",
+      github: "https://github.com/Suriya50/family_vault",
       decorativeText: "Your Documents Safe",
     },
     {
@@ -101,7 +101,7 @@ const Projects = () => {
       icon: <FaCar />,
       iconBg: "from-blue-500 to-cyan-600",
       link: "https://car-rental-react-project-sw18.vercel.app/",
-      github: "https://github.com/Suriya50/car-rental",
+      github: "https://github.com/Suriya50/car_rental_react_project",
       decorativeText: "Drive Your Dreams",
     },
     {
@@ -118,7 +118,7 @@ const Projects = () => {
       icon: <FaShoppingBag />,
       iconBg: "from-pink-500 to-rose-600",
       link: "https://luxweave-ecommerce.vercel.app/",
-      github: "https://github.com/Suriya50/luxweave-ecommerce",
+      github: "https://github.com/Suriya50/Luxweave_ecommerce",
       decorativeText: "Trendy Looks Everyday",
     },
   ];
