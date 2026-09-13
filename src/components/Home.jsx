@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope, FaDownload, FaMapMarkerAlt, FaCircle, FaReact, FaNodeJs } from "react-icons/fa";
 import { SiMongodb, SiExpress } from "react-icons/si";
-import resumePDF from "../assets/images/surya_ats_resume.pdf";
+import resumePDF from "../assets/images/Surya_S_Resume_ATS.pdf";
 
 const Home = () => {
   return (
@@ -72,7 +72,6 @@ const Home = () => {
             <Typewriter
               options={{
                 strings: [
-                   "MERN Full Stack Developer",
                     "MERN Full Stack Developer",
                   "React Developer",
                   "Frontend Engineer",
@@ -188,7 +187,7 @@ const Home = () => {
           className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-2xl mx-auto mb-6"
         >
           {[
-            { val: "6+", label: "Projects Built" },
+            { val: "7+", label: "Projects Built" },
             { val: "10+", label: "Technologies" },
             { val: "100%", label: "Dedication" },
             { val: "24/7", label: "Learning" },
